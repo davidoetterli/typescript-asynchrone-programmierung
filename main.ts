@@ -4,7 +4,7 @@ import { get } from "./utils";
 import { forkJoin } from "rxjs";
 
 /*
-Read data from https://swapi.py4e.com/api/people/1 (Luke Skywalker)
+Read data from https://swapi.dev/api/people/1 (Luke Skywalker)
 and dependent data from swapi to return the following object
 
 {
@@ -50,7 +50,7 @@ export interface PersonInfo {
 // Task 1: write a function using promise based fetch api
 type PromiseBasedFunction = () => Promise<PersonInfo>;
 export const getLukeSkywalkerInfo: PromiseBasedFunction = () => {
-  return fetch("https://swapi.py4e.com/api/people/1").then((response: Response) => {
+  return fetch("https://swapi.dev/api/people/1").then((response: Response) => {
     return response.json().then((person: Person) => {
       //Now we fetch homeworld from the first Person call
       const homeworldPromis = fetch(person.homeworld).then((res) => res.json());
@@ -81,7 +81,7 @@ export const getLukeSkywalkerInfo: PromiseBasedFunction = () => {
 // see also: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-1-7.html
 type AsyncBasedFunction = () => Promise<PersonInfo>;
 export const getLukeSkywalkerInfoAsync: PromiseBasedFunction = async () => {
-  const response = await fetch("https://swapi.py4e.com/api/people/1");
+  const response = await fetch("https://swapi.dev/api/people/1");
   const person = await response.json();
 
   // Fetch HomeWorld
@@ -113,7 +113,7 @@ export const getLukeSkywalkerInfoAsync: PromiseBasedFunction = async () => {
 // Task 3: write a function using Observable based api
 // see also: https://rxjs.dev/api/index/function/forkJoin
 export const getLukeSkywalkerInfoObservable = () => {
-  return get<Person>("https://swapi.py4e.com/api/people/1").pipe(
+  return get<Person>("https://swapi.dev/api/people/1").pipe(
       mergeMap((person: Person) => {
 
         // Fetch homeworld

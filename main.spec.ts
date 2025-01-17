@@ -32,11 +32,11 @@ const expectedResult: PersonInfo = {
       director: "George Lucas",
       release_date: "2005-05-19",
     },
-    {
-      title: "The Force Awakens",
-      director: "J. J. Abrams",
-      release_date: "2015-12-11"
-    },
+    // {
+    //   title: "The Force Awakens",
+    //   director: "J. J. Abrams",
+    //   release_date: "2015-12-11"
+    // },
   ],
 };
 
